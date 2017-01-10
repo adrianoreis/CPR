@@ -47,10 +47,21 @@ bump([])  -> [];
 bump([H|T]) -> [ H + 1 | bump(T)].
 
 
-average(List)  -> sum(List) / len(List).
+%average(List)  -> sum(List) / case len(List) of
+%                                0 -> 1;
+%                                _ -> len(List)
+%                              end.
+average(List)  -> X = sum(List),
+                  Y = len(List),
+                  case Y of
+                    0 -> 0;
+                    _ -> X / Y
+                  end.
+
 
 sum([]) -> 0;
 sum([Head | Tail])  -> Head + sum(Tail).
 
 len([]) -> 0;
 len([_ | Tail]) -> 1 + len(Tail).
+
