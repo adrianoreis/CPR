@@ -1,5 +1,5 @@
 -module(ch02).
--export([listlen/1, listlen2/1, index/2, index2/1, id/1, factorial/1, even/1, number/1,bump/1]).
+-export([listlen/1, listlen2/1, index/2, index2/1, id/1, factorial/1, even/1, number/1,bump/1,average/1]).
 
 listlen([]) -> 0;
 listlen([_|Xs]) -> 1 + listlen(Xs).
@@ -45,3 +45,12 @@ number(_Other)                  -> false.
 %
 bump([])  -> [];
 bump([H|T]) -> [ H + 1 | bump(T)].
+
+
+average(List)  -> sum(List) / len(List).
+
+sum([]) -> 0;
+sum([Head | Tail])  -> Head + sum(Tail).
+
+len([]) -> 0;
+len([_ | Tail]) -> 1 + len(Tail).
