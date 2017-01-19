@@ -1,5 +1,5 @@
 -module(ch02).
--export([listlen/1, listlen2/1, index/2, index2/1, id/1, factorial/1, even/1, number/1,bump/1,average/1,even2/1,member/2]).
+-export([listlen/1, listlen2/1, index/2, index2/1, id/1, factorial/1, even/1, number/1,bump/1,average/1,even2/1,member/2, sumFrom1To/1]).
 
 listlen([]) -> 0;
 listlen([_|Xs]) -> 1 + listlen(Xs).
@@ -94,3 +94,11 @@ average(List) -> average_acc(List, 0, 0).
 average_acc([], _Sum, 0)           -> 0;
 average_acc([], Sum, Length)      -> Sum/Length;
 average_acc([X|Xs], Sum, Length)  -> average_acc(Xs, X+Sum, Length+1).
+
+sumFrom1To(Boundary)  -> sum_acc(1, Boundary, 0).
+
+sum_acc(Index, Boundary, Sum) when Boundary >= Index  -> sum_acc(Index +1, Boundary, Sum+Index);
+sum_acc(_,_,Sum)                                      -> Sum.
+
+
+
